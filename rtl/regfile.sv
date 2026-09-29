@@ -13,8 +13,8 @@ module regfile (
 
     // read data from registers
     // if the address is 0, return 0, else return the value in the register
-    assign rdata1 = a1 ? regs[a1] : 32'b0;
-    assign rdata2 = a2 ? regs[a2] : 32'b0;
+    assign rdata1 = (a1 != 5'b0) ? regs[a1] : 32'b0;
+    assign rdata2 = (a2 != 5'b0) ? regs[a2] : 32'b0;
 
     // write data to register on rising edge of clock if write enable is high
     always_ff @(posedge clk) begin
